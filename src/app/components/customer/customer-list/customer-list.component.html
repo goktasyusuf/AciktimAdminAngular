@@ -1,0 +1,68 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+  crossorigin="anonymous" referrerpolicy="no-referrer" />
+<h4 style="font-family: 'Lobster Two', cursive;" class="mb-4">Aktif Müşteriler</h4>
+
+
+  <section *ngIf="customers">
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">İsime Göre Ara...</label>
+      <input [(ngModel)]="filter" type="email" class="form-control" id="exampleInputEmail1"
+        aria-describedby="emailHelp">
+    </div>
+    <div class="alert alert-info" role="alert" *ngIf="filter?.length > 2">
+      {{filter}} Aradınız...
+    </div>
+
+    <table class="table align-middle mb-0 bg-white">
+      <thead class="bg-light">
+        <tr>
+          <th>İsim - Soyisim</th>
+          <th>Tc Kimlik No</th>
+          <th>Mail Adresi</th>
+          <th>Doğum Tarihi</th>
+          <th>Telefon Numarası</th>
+          <th>Kayıt Tarihi</th>
+          <th>Düzenle</th>
+          <th>Sil</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let customer of customers|customerPipe:filter">
+          <td>
+            <div class="d-flex align-items-center">
+              <img src="https://i2.wp.com/vdostavka.ru/wp-content/uploads/2019/05/no-avatar.png?fit=512%2C512&ssl=1"
+                alt="" style="width: 45px; height: 45px" class="rounded-circle" />
+              <div class="ms-3">
+                <p class="fw-bold mb-1">{{customer.firstName}} {{customer.lastName}}</p>
+              </div>
+            </div>
+          </td>
+          <td>
+            <p class="fw-normal mb-1">{{customer.nationalityId}}</p>
+          </td>
+          <td>
+            <span>{{customer.mailAddress}}</span>
+          </td>
+          <td>{{customer.birthDay}}</td>
+          <td>
+            {{customer.phoneNumber}}
+          </td>
+          <td>
+            {{customer.registerDate}}
+          </td>
+          <td>
+            <a href="customer/edit/{{customer.id}}">
+              <i class="fa-solid fa-pen"></i>
+            </a>
+          </td>
+          <td>
+            <a (click)="deleteCustomer(customer.id)" style="cursor: pointer;">
+              <i class="fa-solid fa-trash"></i>
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>

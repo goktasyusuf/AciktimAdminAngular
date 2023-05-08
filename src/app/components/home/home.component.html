@@ -1,0 +1,89 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster+Two:ital@1&display=swap" rel="stylesheet">
+<aside class="sidebar" [ngClass]="{'open': isSidebarOpen}">
+    <h6  routerLink="/" class="mb-4 title"> Acıktım ADMIN</h6>
+    <div class="sidebar-header">
+    </div>
+    <div class="sidebar-body">
+        <ul class="nav flex-column">
+            <li class="nav-item mb-3">
+                <div class="dropdown">
+                    <button style="color: white;" class="btn dropdown-toggle" type="button" id="dropdownMenuButton"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fa-solid fa-user"></i><span> Kullanıcı İşlemleri</span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <li><a class="dropdown-item" routerLink="customer/list">Kullanıcıları Listele</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li class="nav-item mb-3">
+                <div class="dropdown">
+                    <button style="color: white;" class="btn dropdown-toggle" type="button" id="dropdownMenuButton"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fa-solid fa-utensils"></i> <span> Restoran İşlemleri</span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <li><a class="dropdown-item" routerLink="restaurant/list">Restoranları Listele</a></li>
+                        <li><a class="dropdown-item" routerLink="restaurant/confirm">Restoran Onayla</a></li>
+                       
+                    </ul>
+                </div>
+            </li>
+            <li class="nav-item mb-3">
+                <div class="dropdown">
+                    <button style="color: white;" class="btn dropdown-toggle" type="button" id="dropdownMenuButton"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fa-solid fa-bars"></i><span> Sipariş İşlemleri</span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <li><a class="dropdown-item" routerLink="order/orderlist">Siperiş Listesi</a></li>
+                        <li><a class="dropdown-item" routerLink="order/restaurantorder">Restoran Siparişleri</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a style="color: white;" class="btn" type="button" routerLink="/mails"
+                         aria-expanded="false">
+                         <i class="fa-solid fa-envelope"></i><span> Gelen Mailler</span>
+            </a>
+            </li>
+        </ul>
+        <div class="dropdown settings">
+            <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+                id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fa-solid fa-gear"></i>
+                <span class="d-none d-sm-inline mx-1">Ayarlar</span>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+                <li><a class="dropdown-item" href="#">New project...</a></li>
+                <li><a class="dropdown-item" href="#">Settings</a></li>
+                <li><a class="dropdown-item" href="#">Profile</a></li>
+                <li>
+                    <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="#">Sign out</a></li>
+            </ul>
+        </div>
+    </div>
+</aside>
+<main role="main" [ngClass]="{'main-open': isSidebarOpen}" class="main">
+    <div >
+        <div id="aside-button-container" class="d-flex">
+            <button class="btn  aside_button" type="button" (click)="toggleSidebar()" aria-label="Toggle navigation">
+                <i class="fa-solid fa-sliders"></i>
+            </button>
+        </div>
+        <div class="d-flex justify-content-center">
+            <h2 style="font-family: 'Lobster Two', cursive;">Acıktım Admin Paneli</h2>
+        </div>
+        <hr>
+        <div >
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</main>

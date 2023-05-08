@@ -1,0 +1,106 @@
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -230px;
+  bottom: 0;
+  width: 230px;
+  background-color: #f8f9fa;
+  overflow-y: auto;
+  transition: all 0.3s ease-in-out;
+  padding: 5rem 2rem;
+  background-color: #5D196A;
+  z-index: 999;
+}
+
+.title {
+  position: absolute;
+  top: 30px;
+  margin: auto;
+  color: white;
+  margin-left: 1rem;
+  cursor: pointer;
+ 
+}
+
+.dropdown{
+  color: white;
+}
+
+.dropdown i,span {
+  color: white;
+}
+
+.settings {
+  position: absolute;
+  bottom: 30px;
+}
+
+.sidebar li {
+  color: white;
+  list-style: none;
+}
+.sidebar li li {
+  font-size: 13px;
+}
+.sidebar li:hover {
+  cursor: pointer;
+}
+.dropdown-menu {
+  animation: .5s step-end;
+  transition:  all 0.2s;
+}
+.sidebar.open {
+  left: 0;
+}
+
+.main {
+  margin-left: 200px;
+  transition: all 0.3s ease-in-out;
+  padding: 70px;
+  padding-top: 20px;
+  margin-left: 170px;
+}
+
+.main.open {
+  margin-left: 0;
+}
+
+.show_main {
+  width: 100%;
+  margin: auto;
+}
+
+.aside_button {
+  position: absolute;
+  left: 185px;
+  top: 0px;;
+  z-index: 999;
+  transition: .4s;
+  background-color: #5D196A;
+  color: white;
+}
+
+.navbar {
+  top: 0px;
+  position: fixed;
+}
+
+.aside_button.open {
+  left: 0px;
+  top: 0px;
+  transition: .4s;
+}
+@media (max-width: 767px) {
+  .main {
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+    margin-top: 2rem;
+  }
+  .aside_button {
+    position: absolute;
+    top: 0px;
+    left: 10px;
+  }
+}
+

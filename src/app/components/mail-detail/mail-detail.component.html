@@ -1,0 +1,28 @@
+<br>
+<section *ngIf="mail">
+    <div class="card p-5">
+        <div class="d-flex justify-content-between">
+            <h2>Gönderen Kişi :  {{mail.customerName}}</h2>
+            <h3>Mail Id:{{mail.id}}</h3>
+        </div>
+        <div class="d-flex justify-content-between">
+            <h5>Gönderen Mail : {{mail.mail}}</h5>
+            <h5>Gönderen Kullanıcı Id : {{mail.customerId}}</h5>
+        </div>
+       
+
+        <div>
+            <div class="subject">
+                Konu : {{mail.subject}}
+            </div>
+            <div class="content mt-5">
+                <h4>İçerik</h4>
+                <p style="font-size: 25px;">
+                    {{mail.content}}
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+</section>

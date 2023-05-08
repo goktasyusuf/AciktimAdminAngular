@@ -1,0 +1,90 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+  crossorigin="anonymous" referrerpolicy="no-referrer" />
+<h4 style="font-family: 'Lobster Two', cursive;" class="mb-4">Başvuru Yapan Restoranlar</h4>
+
+
+
+<div class="mb-3">
+  <label for="exampleInputEmail1" class="form-label">İsime Göre Ara...</label>
+  <input [(ngModel)]="filter" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+</div>
+
+<div class="alert alert-info" role="alert" *ngIf="filter?.length>=2">
+  {{filter}}  aradınız
+</div>
+
+<table class="table align-middle mb-0 bg-white">
+  <thead class="bg-light">
+    <tr>
+      <th>Restoran Adı</th>
+      <th>Vergi No</th>
+      <th>Mail Adresi</th>
+      <th>Açılış Saati</th>
+      <th>Kapanış Saati</th>
+      <th>Telefon Numarası</th>
+      <th>İncele</th>
+      <th>Reddet</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let restaurant of restaurants|restaurantPipe:filter">
+      <td>
+        <div class="d-flex align-items-center">
+          <img [src]="getImagePath(restaurant)" alt="" style="width: 45px; height: 45px" class="rounded-circle" />
+          <div class="ms-3">
+            <p class="fw-bold mb-1">{{restaurant.restaurantName}}</p>
+          </div>
+        </div>
+      </td>
+      <td>
+        <p class="fw-normal mb-1">{{restaurant.taxNumber}}</p>
+      </td>
+      <td>
+        <span>{{restaurant.mailAddress}}</span>
+      </td>
+      <td>{{restaurant.openingTime}}</td>
+      <td>{{restaurant.closingTime}}</td>
+      <td>
+        {{restaurant.phoneNumber}}
+      </td>
+      <td>
+        <div class="confirm" (click)="getCategoryName(restaurant.categoryId)">
+          <i (click)="dialog.showModal()" class="fa-solid fa-magnifying-glass fa-lg pointer"></i>
+          <dialog #dialog>
+            <div class="d-flex align-items-center justify-content-center x">
+              <div class="dialog">
+                <h2>Restoran Bilgileri</h2>
+                <div class="title">Restoran Adı:</div>{{restaurant.restaurantName}}
+                <hr>
+                <div class="title">Vergi No:</div>{{restaurant.taxNumber}}
+                <hr>
+                <div class="title">Mail Adresi:</div>{{restaurant.mailAddress}}
+                <hr>
+                <div class="title">Açılış Saati:</div>{{restaurant.openingTime}}
+                <hr>
+                <div class="title">Kapanış Saati:</div>{{restaurant.closingTime}}
+                <hr>
+                <div class="title">Telefon Numarası:</div> {{restaurant.phoneNumber}}
+                <hr>
+                <div class="title">Minumum Sipariş Tutarı:</div>{{restaurant.minCartPrice}}
+                <hr>
+                <div class="title">Katagori Türü:</div>{{categoryName}}
+              </div>
+            </div>
+            <button (click)="updateRestaurant(restaurant)" class="close_button">Onayla</button>
+            <button class="close_button" (click)="dialog.close()">Vazgeç</button>
+          </dialog>
+        </div>
+      </td>
+      <td>
+        <a class="pointer" (click)="deleteRestaurant(restaurant.id)">
+          <div class="deny">
+            <i class="fa-solid fa-x"></i>
+          </div>
+        </a>
+      </td>
+    </tr>
+  </tbody>
+</table>

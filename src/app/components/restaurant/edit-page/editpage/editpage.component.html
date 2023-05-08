@@ -1,0 +1,141 @@
+<div class="container" *ngIf="restaurant">
+    <h3 class="mb-3"  style="font-family: 'Lobster Two', cursive;">Restoranı Düzenle</h3>
+    <div class="row gutters">
+        <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
+            <div class="card h-100">
+                <div class="card-body">
+                    <div class="account-settings">
+                        <div class="user-profile">
+                            <div class="user-avatar d-flex justify-content-center">
+                                <img width="250" height="200"
+                                    [src]="getImagePath(restaurant)"
+                                    alt="Maxwell Admin">
+                            </div>
+                            <div class="d-flex justify-content-center mt-4">
+                                <div>
+                                    <h5 class="user-name">{{restaurant.restaurantName}}</h5>
+                                    <h6 class="user-email">{{restaurant.mailAddress}}</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+            <div class="card h-100">
+                <div class="card-body">
+                    <form [formGroup]="updateRestaurantForm">
+                        <div class="row gutters">
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <h6 class="mb-2 text-primary">Restoran Detayları</h6>
+                            </div>
+
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <label for="fullName">Restoran Adı</label>
+                                    <input type="text" formControlName="restaurantName" class="form-control"
+                                        id="fullName" placeholder="Restoran Adı">
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mb-3">
+                                <div class="form-group">
+                                    <label for="eMail">Adresi</label>
+                                    <input type="text" formControlName="restaurantAddress" class="form-control"
+                                        id="eMail" placeholder="Adres">
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mb-3">
+                                <div class="form-group">
+                                    <label for="phone">Telefon Numarası</label>
+                                    <input type="text" formControlName="phoneNumber" class="form-control" id="phone"
+                                        placeholder="Telefon Numarası">
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <label for="website">Mail Adresi</label>
+                                    <input type="text" formControlName="mailAddress" class="form-control" id="website"
+                                        placeholder="Mail Adresi">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row gutters">
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <label for="Street">Vergi Levha No</label>
+                                    <input type="number" formControlName="taxNumber" class="form-control" id="Street"
+                                        placeholder="Vergi Levha No">
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <label for="Street">Restoran Kategorisi</label>
+                                    <br>
+                                    <select style="margin-top: .5rem;" formControlName="categoryId">
+                                        <option *ngFor="let category of categories" value="{{category.id}}">
+                                            {{category.categoryName}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mb-3">
+                                <div class="form-group">
+                                    <label for="Street">Minimum Sepet Tutarı</label>
+                                    <input type="number" formControlName="minCartPrice" class="form-control" 
+                                        placeholder="Min. Sepet Tutarı">
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mb-3 mt-4">
+                                <div class="form-group">
+                                    <style>
+                                        input[type="time"] {
+                                            border-collapse: collapse;
+                                            border-radius: 10px;
+                                            overflow: hidden;
+                                        }
+
+                                        th {
+                                            border: 1px solid #ccc;
+                                            padding: 10px;
+                                            font-size: 12px;
+                                        }
+
+                                        td {
+                                            border: 1px solid #ccc;
+                                            padding: 10px;
+                                            font-size: 14px;
+
+                                        }
+                                    </style>
+                                    <table>
+                                        <tr>
+                                            <th>Açılış Saati</th>
+                                            <th>Kapanış Saati</th>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="time" formControlName="openingTime" required
+                                                    name="pzt_acilis" /></td>
+                                            <td><input type="time" formControlName="closingTime" required
+                                                    name="pzt_kapanis" /></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row gutters">
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div class="text-right">
+                                    <a>
+                                        <input type="reset" value="İptal" class="btn" style="background-color:#5D196A;color: white;">
+                                        <button style="margin-left: 1rem;background-color: #5D196A;color: white;" type="button" id="submit" name="submit" (click)="updateRestaurant()"
+                                            class="btn">Güncelle</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

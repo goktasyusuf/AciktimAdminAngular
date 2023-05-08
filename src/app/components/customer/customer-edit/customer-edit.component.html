@@ -1,0 +1,85 @@
+
+<div class="container mt-4" *ngIf="customer">
+    <div class="row gutters">
+        <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
+            <div class="card h-100">
+                <div class="card-body">
+                    <div class="account-settings">
+                        <div class="user-profile">
+                            <div class="user-avatar d-flex justify-content-center">
+                                <img width="200" height="200"
+                                    src="https://i2.wp.com/vdostavka.ru/wp-content/uploads/2019/05/no-avatar.png?fit=512%2C512&ssl=1"
+                                    alt="Maxwell Admin">
+                            </div>
+                            <div class="d-flex justify-content-center">
+                                <div>
+                                    <h5 class="user-name">{{customer.firstName}} {{customer.lastName}}</h5>
+                                    <h6 class="user-email">{{customer.mailAddress}}</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+            <div class="card h-100">
+                <div class="card-body">
+                    <form [formGroup]="updateForm">
+                    <div class="row gutters">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <h6 class="mb-2 text-primary">Kullanıcı Detayları</h6>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label for="fullName">İsim</label>
+                                <input type="text" formControlName="firstName" class="form-control" id="fullName" placeholder="İsim">
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mb-3">
+                            <div class="form-group">
+                                <label for="eMail">Soyisim</label>
+                                <input type="text" class="form-control" formControlName="lastName"  placeholder="Soyisim">
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mb-3">
+                            <div class="form-group">
+                                <label for="phone">Telefon Numarası</label>
+                                <input type="text" class="form-control" id="phone" formControlName="phoneNumber" placeholder="Telefon Numarası">
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label for="website">Mail Adresi</label>
+                                <input type="url" class="form-control" formControlName="mailAddress" placeholder="Mail Adresi">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row gutters">
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label for="Street">TC Kimlik No</label>
+                                <input type="name" class="form-control" formControlName="nationalityId" id="Street" placeholder="TC Kimlik No">
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mb-3">
+                            <div class="form-group">
+                                <label for="ciTy">Doğum Tarihi</label>
+                                <input type="name" class="form-control" formControlName="birthDay" placeholder="Doğum Tarihi">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row gutters">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="text-right">
+                                <input style="background-color:#5D196A;" class="btn" style="margin-right: 15px;" type="reset" value="Vazgeç">
+                                <button style="background-color:#5D196A;color: white;" type="button" (click)="updateUser()" id="submit" name="submit" class="btn">Güncelle</button>
+                            </div>
+                        </div>  
+                    </div>
+                </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

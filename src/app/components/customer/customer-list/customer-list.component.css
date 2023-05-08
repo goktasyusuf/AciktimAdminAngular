@@ -1,0 +1,8 @@
+table a {
+    color: black;
+}
+
+table a:hover {
+    color: red;
+    transition: all .4s;
+}

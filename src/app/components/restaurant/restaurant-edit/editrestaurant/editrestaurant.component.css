@@ -1,0 +1,10 @@
+
+.confirm{
+    color: black;
+}
+.deny{
+    color: red;
+}
+.delete:hover {
+    cursor: pointer;
+}
